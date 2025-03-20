@@ -10,9 +10,10 @@ class Database {
     private $password;
 
     public function __construct() {
-        $this->host = getenv('DATABASE_HOST') ?: 'dpg-cvd52mjv2p9s73cbgu3g-a';  // Internal Render Host
+        // Read environment variables
+        $this->host = getenv('DATABASE_HOST') ?: 'dpg-cvd52mjv2p9s73cbgu3g-a';
         $this->port = getenv('DATABASE_PORT') ?: '5432';
-        $this->db_name = getenv('DATABASE_NAME') ?: 'quotesdb';
+        $this->db_name = getenv('DATABASE_NAME') ?: 'inf653_cpham_test';
         $this->username = getenv('DATABASE_USER') ?: 'inf653_cpham_test_user';
         $this->password = getenv('DATABASE_PASSWORD') ?: 'Opm5zR3aSjynxAwSkBM4o5x3P38cYLuR';
     }
@@ -28,6 +29,7 @@ class Database {
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
+            error_log('Database Connection Error: ' . $e->getMessage()); // Logs error in Render logs
             echo json_encode(['message' => 'Database Connection Error']);
             exit();
         }
