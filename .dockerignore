@@ -1,0 +1,10 @@
+# Ignore sensitive files
+.env
+.htaccess
+config.php
+
+# Ignore system and dependency files
+vendor/
+node_modules/
+.DS_Store
+*.log
