@@ -1,0 +1,17 @@
+# Ignore environment files
+.env
+.htaccess
+config.php
+
+# Ignore OS-specific & editor files
+.DS_Store
+*.log
+*.bak
+
+# Ignore dependency files
+vendor/
+node_modules/
+
+# Ignore IDE & editor settings
+.vscode/
+.idea/
