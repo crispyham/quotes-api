@@ -15,8 +15,8 @@ WORKDIR /var/www/html
 # Copy project files to the container
 COPY . /var/www/html
 
-# Set permissions for Apache
-RUN chown -R www-data:www-data /var/www/html
+# Copy custom Apache configuration
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
