@@ -10,11 +10,11 @@ class Database {
     private $password;
 
     public function __construct() {
-        $this->host = getenv('DATABASE_HOST') ?: 'localhost';
+        $this->host = getenv('DATABASE_HOST') ?: 'dpg-cvd52mjv2p9s73cbgu3g-a';  // Internal Render Host
         $this->port = getenv('DATABASE_PORT') ?: '5432';
         $this->db_name = getenv('DATABASE_NAME') ?: 'quotesdb';
-        $this->username = getenv('DATABASE_USER') ?: 'postgres';
-        $this->password = getenv('DATABASE_PASSWORD') ?: 'password';
+        $this->username = getenv('DATABASE_USER') ?: 'inf653_cpham_test_user';
+        $this->password = getenv('DATABASE_PASSWORD') ?: 'Opm5zR3aSjynxAwSkBM4o5x3P38cYLuR';
     }
 
     public function connect() {
