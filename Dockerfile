@@ -15,11 +15,22 @@ WORKDIR /var/www/html
 # Copy project files to the container
 COPY . /var/www/html
 
-# Copy custom Apache configuration
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
+# Set correct permissions
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
+
+# Set Apache configuration to allow access
+RUN echo "<Directory /var/www/html/> \n\
+    Options Indexes FollowSymLinks \n\
+    AllowOverride All \n\
+    Require all granted \n\
+</Directory>" > /etc/apache2/sites-available/000-default.conf
+
+# Restart Apache to apply changes
+RUN service apache2 restart
 
 # Expose port 80 for Apache
 EXPOSE 80
