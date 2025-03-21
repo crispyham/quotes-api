@@ -18,6 +18,13 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 $author_id = isset($_GET['author_id']) ? $_GET['author_id'] : null;
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
+// Redirect to read_single.php if only id is set (no filters)
+if ($id && !$author_id && !$category_id) {
+    require 'read_single.php';
+    exit();
+}
+
+
 // Retrieve Quotes
 $result = $quote->read($author_id, $category_id, $id);
 
