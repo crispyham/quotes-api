@@ -2,6 +2,8 @@
 .env
 .htaccess
 config.php
+quotesdb_backup.sql
+quotesdb_backup.dump
 
 # Ignore OS-specific & editor files
 .DS_Store
