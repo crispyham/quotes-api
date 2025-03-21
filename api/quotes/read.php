@@ -28,24 +28,24 @@ $num = $result->rowCount();
 if ($num > 0) {
     // Quote Array
     $quotes_arr = array();
-    $quotes_arr['data'] = array();
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
-
+    
         $quote_item = array(
             'id' => $id,
             'quote' => $quote,
             'author' => $author_name,
             'category' => $category_name
         );
-
+        
         // Push to "data"
-        array_push($quotes_arr['data'], $quote_item);
+        array_push($quotes_arr, $quote_item);
     }
-
+    
     // Convert to JSON & Output
     echo json_encode($quotes_arr);
+    
 } else {
     // No Quotes Found
     echo json_encode(
