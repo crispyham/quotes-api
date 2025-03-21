@@ -50,9 +50,15 @@ if ($stmt->rowCount() == 0) {
 
 // If there are errors, return them in a single response
 if (!empty($errors)) {
-    echo json_encode(['message' => $errors]);
+    // If only one error, return it as a string
+    if (count($errors) === 1) {
+        echo json_encode(['message' => $errors[0]]);
+    } else {
+        echo json_encode(['message' => $errors]);
+    }
     exit();
 }
+
 
 // Create Quote
 if ($quote->create()) {
