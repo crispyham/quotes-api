@@ -18,12 +18,20 @@ $id = isset($_GET['id']) ? $_GET['id'] : null;
 $author_id = isset($_GET['author_id']) ? $_GET['author_id'] : null;
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
-// Redirect to read_single.php if only id is set (no filters)
-if ($id && !$author_id && !$category_id) {
+// Bonus Get Random Quote
+$random = isset($_GET['random']) && $_GET['random'] === 'true';
+
+// If only id is set and not asking for random, return specific quote
+if ($id && !$author_id && !$category_id && !$random) {
     require 'read_single.php';
     exit();
 }
 
+// If random is requested (with or without filters), route to random handler
+if ($random) {
+    require 'read_random.php';
+    exit();
+}
 
 // Retrieve Quotes
 $result = $quote->read($author_id, $category_id, $id);
