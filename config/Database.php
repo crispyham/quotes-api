@@ -11,11 +11,11 @@ class Database {
 
     public function __construct() {
         // Read environment variables
-        $this->host = getenv('DATABASE_HOST') ?: 'dpg-cvd52mjv2p9s73cbgu3g-a';
-        $this->port = getenv('DATABASE_PORT') ?: '5432';
-        $this->db_name = getenv('DATABASE_NAME') ?: 'inf653_cpham_test';
-        $this->username = getenv('DATABASE_USER') ?: 'inf653_cpham_test_user';
-        $this->password = getenv('DATABASE_PASSWORD') ?: 'Opm5zR3aSjynxAwSkBM4o5x3P38cYLuR';
+        $this->host = getenv('DATABASE_HOST');
+        $this->port = getenv('DATABASE_PORT');
+        $this->db_name = getenv('DATABASE_NAME');
+        $this->username = getenv('DATABASE_USER');
+        $this->password = getenv('DATABASE_PASSWORD');
     }
 
     public function connect() {
@@ -38,4 +38,3 @@ class Database {
     }
 }
 
-?>
